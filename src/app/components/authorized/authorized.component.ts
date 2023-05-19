@@ -31,7 +31,7 @@ export class AuthorizedComponent implements OnInit {
         this.tokenService.setTokens(data['access_token'], data['refresh_token']);
         this.router.navigate(['']);
       },
-      error: (err) => console.log(err)
+      error: (err) => console.error(err)
     });
   }
 }

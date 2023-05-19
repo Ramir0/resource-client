@@ -1,1 +1,81 @@
-<p>storage works!</p>
+<div class="container">
+    <h1>List of Storages</h1>
+    <button class="btn btn-success mb-3" (click)="openCreateModal()">Create Storage</button>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let storage of storageList">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Storage: {{ storage.id }}</h5>
+                    <p class="card-text">Bucket: {{ storage.bucket }}</p>
+                    <p class="card-text">Path: {{ storage.path }}</p>
+                    <p class="card-text">Storage Type: {{ storage.storageType }}</p>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary mr-2" (click)="editStorage(storage)">Edit</button>
+                        <button class="btn btn-danger" (click)="confirmDeleteStorage(storage)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- Create Storage Modal -->
+<div class="modal" tabindex="-1" role="dialog" [class.show]="isCreateModalOpen" [class.d-block]="isCreateModalOpen">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Storage</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    (click)="closeCreateModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="bucketInput">Bucket:</label>
+                    <input type="text" class="form-control" id="bucketInput" [(ngModel)]="newStorage.bucket"
+                        placeholder="Enter bucket">
+                </div>
+                <div class="form-group">
+                    <label for="pathInput">Path:</label>
+                    <input type="text" class="form-control" id="pathInput" [(ngModel)]="newStorage.path"
+                        placeholder="Enter path">
+                </div>
+                <div class="form-group">
+                    <label for="storageTypeInput">Storage Type:</label>
+                    <input type="text" class="form-control" id="storageTypeInput" [(ngModel)]="newStorage.storageType"
+                        placeholder="Enter storage type">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="createStorage()">Create</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    (click)="closeCreateModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal" tabindex="-1" role="dialog" [class.show]="isDeleteConfirmationOpen"
+    [class.d-block]="isDeleteConfirmationOpen">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    (click)="cancelDeleteStorage()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the storage with Id {{selectedStorage?.id}}?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="deleteStorage()">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    (click)="cancelDeleteStorage()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

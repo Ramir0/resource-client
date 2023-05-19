@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #e3f2fd;">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Resource App</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -14,7 +14,8 @@
           <a class="nav-link" routerLink="/storage" *ngIf="isLoggedIn">Storage Type</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="isAdmin">Admin</a>
+          <a class="nav-link disabled" *ngIf="isAdmin && isLoggedIn">User type: Admin</a>
+          <a class="nav-link disabled" *ngIf="!isAdmin && isLoggedIn">User type: Regular</a>
         </li>
       </ul>
       <form class="d-flex" role="search">

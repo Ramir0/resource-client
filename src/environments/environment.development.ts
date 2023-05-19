@@ -11,5 +11,6 @@ export const environment = {
     code_challenge: 'zdlJiwqCw_qzE1QA7ja9SVZ47OLb7suNiYJa1s33lpA',
     code_verifier: 'Vq6MqZ5Bklg3MFkhr6LHgO4sg1jrS2o0wEbJXH3mz4N',
     token_url: 'http://localhost:8088/oauth2/token',
-    logout_url: 'http://localhost:8088/logout'
+    logout_url: 'http://localhost:8088/logout',
+    storage_url: 'http://localhost:8084'
 };

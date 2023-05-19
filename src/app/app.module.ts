@@ -10,6 +10,9 @@ import { MenuComponent } from './components/menu/menu.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LogoutComponent } from './components/logout/logout.component';
 import { StorageComponent } from './components/storage/storage.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { StorageComponent } from './components/storage/storage.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
