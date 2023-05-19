@@ -1,27 +1,29 @@
-# ResourceClient
+# Resource Client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
+This project is running with Angular version 16.0.1.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Dependencies
+Before running the Angular project, please ensure that you have the following dependencies installed:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- `Node v16.18.1` The source code is written with Typescript, so make sure you have NodeJS installed and set up properly on your machine.
+- `Docker` The project is designed to run in Docker containers. You will need to have Docker installed on your machine.
 
-## Build
+Please make sure that all of these dependencies are installed and configured correctly before attempting to run the project.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Running Project
+### First time execution
+- `docker network create resource-network`
+- `npm install`
+### Running from Maven
+- `npm start`
+### Running from Dockerfile
+- `docker build --no-cache -t resource-client:latest .`
+- `docker run -d -p 4200:80 --network resource-network --name resource-client resource-client:latest`
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Cleaning Project and Resources
+`npm cache clean --force` - Clean project files generated and update dependencies
+`docker network rm resource-network` - Delete docker network
